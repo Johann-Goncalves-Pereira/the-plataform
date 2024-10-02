@@ -1,0 +1,33 @@
+body {
+	> header,
+	> aside,
+	> main,
+	> footer {
+		// display: none;
+		backdrop-filter: blur(24px);
+		border: var(--color-surface-300) 1px solid;
+		border-radius: 16px;
+		padding: 0.25rem;
+	}
+}
+
+.background {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+
+	z-index: -60;
+	margin-left: auto;
+	aspect-ratio: 9 / 16;
+	width: auto;
+	height: 100dvh;
+
+	~ .background {
+		position: fixed;
+		backdrop-filter: blur(4px);
+		margin-inline: auto 49.5dvw;
+		inset: 0;
+		width: 5rem;
+	}
+}

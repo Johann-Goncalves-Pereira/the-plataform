@@ -1,0 +1,7 @@
+@use '../../../styles/abstract/' as *;
+
+.sidebar {
+	@media screen and (--md-n-below) {
+		display: none;
+	}
+}

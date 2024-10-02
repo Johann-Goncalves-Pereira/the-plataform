@@ -1,0 +1,3 @@
+@function hsl($color) {
+	@return unquote('hsl(#{$color})');
+}
