@@ -1,5 +1,19 @@
 :root {
-	--color-surface-100: #feeacf;
-	--color-surface-200: #f0cea2;
-	--color-surface-300: #e1af84;
+	.layout-template .light
+	// &:has(meta[content='light'])
+	{
+		--color-surface-100: oklch(95% 0.0075 25);
+		--color-surface-200: oklch(87% 0.0075 25);
+		--color-surface-300: oklch(78% 0.0075 25);
+
+		--color-primary-100: oklch(95% 0.35 25);
+	}
+
+	.layout-template .dark
+	// &:has(meta[content='dark'])
+	{
+		--color-surface-100: oklch(13% 0.0075 75);
+		--color-surface-200: oklch(17% 0.0075 75);
+		--color-surface-300: oklch(21% 0.0075 75);
+	}
 }
