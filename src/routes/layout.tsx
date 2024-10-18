@@ -2,11 +2,10 @@ import { component$, Slot, useStyles$ } from '@builder.io/qwik'
 import type { RequestHandler } from '@builder.io/qwik-city'
 
 import styles from './layout.scss?inline'
-import Background from '/public/background/bg-000.jpg?jsx'
 
 import Header from '~/components/Layout/Header/Header'
-import RightSideBar from '~/components/Layout/RightSideBar/RightSideBar'
 import LeftSideBar from '~/components/Layout/LeftSideBar/LeftSideBar'
+import RightSideBar from '~/components/Layout/RightSideBar/RightSideBar'
 import Footer from '~/components/Layout/Footer/Footer'
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -32,8 +31,6 @@ export default component$(() => {
 			</main>
 			<RightSideBar />
 			<Footer />
-			<Background class='background' />
-			<div class='background' />
 		</>
 	)
 })
