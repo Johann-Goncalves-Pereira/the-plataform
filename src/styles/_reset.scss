@@ -1,51 +1,74 @@
+@use 'abstract/' as *;
+
 /* 
 *   Kevin Powell
 *   https://youtu.be/cCAtD_BAHNw 
 */
 
-*,
-*::before,
-*::after {
+:where(*, *::before, *::after) {
 	box-sizing: border-box;
 }
 
-* {
+:where(*) {
 	margin: 0;
 	padding: 0;
 	font: inherit; /* Get rid of all font sizes and heights */
 }
 
-html {
-	hanging-punctuation: first last; /* Not supported in Chrome */
+:where(html) {
 	color-scheme: dark light; /* Default dark */
+
+	@supports (hanging-punctuation: first last) {
+		/* https://caniuse.com/?search=hanging-punctuation */
+		hanging-punctuation: first last;
+	}
+
+	@supports (interpolate-size: allow-keywords) {
+		/* https://caniuse.com/?search=allow-keywords */
+		interpolate-size: allow-keywords;
+	}
 }
 
 /* Media responsive */
-img,
-picture,
-svg,
-video {
+:where(img, picture, svg, video) {
 	display: block;
 	max-width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:where(img) {
+	vertical-align: middle;
+	shape-margin: 0.75rem;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: auto;
+	font-style: italic;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
 	text-wrap: balance;
 }
 
-p {
+:where(ul, ol) {
+	list-style: none;
+}
+
+:where(p) {
 	max-width: 75ch;
 	text-wrap: pretty; /* Prevents orphans on lines */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	:has(:target) {
-		scroll-behavior: smooth;
-		scroll-padding-top: 3rem;
+@media (--motionOK) {
+	@supports not selector(:has(*)) {
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 3rem;
+		}
+	}
+
+	@supports selector(:has(*)) {
+		:has(:target) {
+			scroll-behavior: smooth;
+			scroll-padding-top: 3rem;
+		}
 	}
 }

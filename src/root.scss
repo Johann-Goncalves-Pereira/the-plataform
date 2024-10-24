@@ -1,7 +1,7 @@
 @forward 'styles/';
 @use './styles/abstract/' as *;
 
-body {
+:where(body) {
 	$gap: 0.5rem;
 
 	display: grid;

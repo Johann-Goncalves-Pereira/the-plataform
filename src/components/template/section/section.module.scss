@@ -1,6 +1,6 @@
-.section {
+html :where(.section) {
 	backdrop-filter: blur(24px);
-	border: var(--color-surface-200) 1px solid;
-	border-radius: 1rem;
-	padding: 0.25rem;
+	border: var(--color-surface-300) 1px solid;
+	border-radius: var(--rounded-conditional-md);
+	padding: 0.5rem;
 }

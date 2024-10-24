@@ -64,6 +64,9 @@ export default defineConfig(({ command, mode }): UserConfig => {
 		},
 
 		css: {
+			modules: {
+				localsConvention: 'camelCase',
+			},
 			preprocessorOptions: {
 				scss: {
 					api: 'modern-compiler',
