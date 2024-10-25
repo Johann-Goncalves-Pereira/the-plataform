@@ -2,6 +2,7 @@ import {
 	$,
 	ButtonHTMLAttributes,
 	component$,
+	CSSProperties,
 	DialogHTMLAttributes,
 	QRL,
 	QRLEventHandlerMulti,
@@ -19,7 +20,9 @@ interface Signal {
 }
 
 interface DialogProps extends Signal {
+	type?: 'dialog' | 'modal'
 	class?: string
+	style?: CSSProperties
 	fnQRL$?: QRL<(ev: MouseEvent, el: HTMLDialogElement) => Promise<void>>
 	rest?:
 		| DialogHTMLAttributes<HTMLDialogElement>
@@ -54,28 +57,57 @@ export const handleCloseDialog = (
 		open = el.open
 		el.close()
 	}
+
+	return open
 }
 
 export const Dialog = component$(
-	({ id, class: className, fnQRL$, rest }: DialogProps) => (
-		<dialog
-			class={`${className} ${sectionStyles.section}`}
-			id={id.dialog}
-			aria-labelledby={id.button}
-			{...rest}
-			onClick$={fnQRL$}
-		>
-			<Slot />
-		</dialog>
-	),
+	({
+		type = 'modal',
+		id,
+		class: className,
+		style,
+		fnQRL$,
+		rest,
+	}: DialogProps) => {
+		{
+			if (type === 'modal')
+				return (
+					<dialog
+						class={`${className} ${sectionStyles.section}`}
+						id={id.dialog}
+						aria-labelledby={id.button}
+						style={style}
+						{...rest}
+						onClick$={fnQRL$}
+					>
+						<Slot />
+					</dialog>
+				)
+
+			if (type === 'dialog')
+				return (
+					<dialog class={className} id={id.dialog} style={style} {...rest}>
+						<aside onClick$={fnQRL$} class={sectionStyles.section}>
+							<Slot />
+						</aside>
+					</dialog>
+				)
+		}
+	},
 )
 
-export const handleOpenDialog = (dialogID: string, open: boolean) => {
+export const handleOpenDialog = (
+	type: 'dialog' | 'modal',
+	dialogID: string,
+	open: boolean,
+) => {
 	const dialog = document.getElementById(dialogID) as HTMLDialogElement | null
 
 	if (dialog) {
 		open = dialog.open
-		dialog.open ? dialog.close() : dialog.showModal()
+		if (type === 'modal') dialog.open ? dialog.close() : dialog.showModal()
+		if (type === 'dialog') dialog.open ? dialog.close() : dialog.show()
 	}
 }
 
