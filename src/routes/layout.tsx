@@ -3,10 +3,8 @@ import type { RequestHandler } from '@builder.io/qwik-city'
 
 import styles from './layout.scss?inline'
 
-import Header from '~/components/Layout/Header/Header'
-import LeftSideBar from '~/components/Layout/LeftSideBar/LeftSideBar'
-import RightSideBar from '~/components/Layout/RightSideBar/RightSideBar'
-import Footer from '~/components/Layout/Footer/Footer'
+import Header from '~/components/layout/header/header'
+import Footer from '~/components/layout/footer/footer'
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	// Control caching for this request for best performance and to reduce hosting costs:
@@ -25,11 +23,10 @@ export default component$(() => {
 	return (
 		<>
 			<Header />
-			<LeftSideBar />
 			<main>
 				<Slot />
 			</main>
-			<RightSideBar />
+			<aside aria-labelledby='sidebar--right'>d</aside>
 			<Footer />
 		</>
 	)

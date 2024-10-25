@@ -15,6 +15,10 @@
 	font: inherit; /* Get rid of all font sizes and heights */
 }
 
+:focus-visible {
+	outline-color: transparent;
+}
+
 :where(html) {
 	color-scheme: dark light; /* Default dark */
 
@@ -52,9 +56,38 @@
 	list-style: none;
 }
 
+:where(button) {
+	cursor: pointer;
+}
+
 :where(p) {
 	max-width: 75ch;
 	text-wrap: pretty; /* Prevents orphans on lines */
+}
+
+:where(a) {
+	color: inherit;
+	text-decoration: none;
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+	display: none;
+}
+
+/* Utils */
+.sr-only {
+	position: absolute;
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border-width: 0;
+	white-space: nowrap;
 }
 
 @media (--motionOK) {

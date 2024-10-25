@@ -10,9 +10,9 @@
 	--color-primary-900: oklch(89.21% 0.0788 6.476249026640096);
 	--color-primary-999: oklch(96.78% 0.0266 3.65);
 
-	--color-surface-100: oklch(13% 0.0075 75);
-	--color-surface-200: oklch(17% 0.0075 75);
-	--color-surface-300: oklch(21% 0.0075 75);
+	--color-surface-100: oklch(17% 0.0075 75);
+	--color-surface-200: oklch(22% 0.0075 75);
+	--color-surface-300: oklch(29% 0.0075 75);
 	--color-text: oklch(95% 0.0075 25);
 }
 
@@ -31,7 +31,7 @@
 	--color-surface-100: oklch(95% 0.0075 25);
 	--color-surface-200: oklch(87% 0.0075 25);
 	--color-surface-300: oklch(78% 0.0075 25);
-	--color-text: oklch(13% 0.0075 75);
+	--color-text: oklch(17% 0.0075 75);
 }
 
 @mixin color {
@@ -63,6 +63,7 @@
 	--rounded-md: 8px;
 	--rounded-lg: 16px;
 	--rounded-xl: 32px;
+	--rounded-full: 200vmax;
 
 	--rounded-conditional-xs: #{condicional-rounded(var(--rounded-xs))};
 	--rounded-conditional-sm: #{condicional-rounded(var(--rounded-sm))};
