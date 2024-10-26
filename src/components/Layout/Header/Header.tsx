@@ -8,6 +8,11 @@ import {
 	LuLink,
 	LuHash,
 	LuBellDot,
+	LuPanelLeftOpen,
+	LuPanelLeftClose,
+	LuWaypoints,
+	LuBarChartHorizontal,
+	LuFolderRoot,
 } from '@qwikest/icons/lucide'
 
 import { generate } from 'random-words'
@@ -78,6 +83,8 @@ export default component$(() => {
 
 	/* Notification */
 	const handleNotificationOpen$ = $(() => {
+		getHeaderBoundary$()
+
 		handleOpenDialog('modal', notification.id.dialog, notification.open)
 		notification.open = true
 	})
@@ -146,7 +153,7 @@ export default component$(() => {
 							open={notification.open}
 							fnQRL$={handleNotificationOpen$}
 							rest={{
-								onFocus$: getHeaderBoundary$,
+								// onFocus$: getHeaderBoundary$,
 								title: 'Open dialog for Notification',
 							}}
 						>
@@ -194,18 +201,28 @@ export default component$(() => {
 						tabIndex={1}
 						aria-hidden
 					>
+						<LuWaypoints />
 						Opportunities
 						<div />
 					</Link>
 					<Link href='/rooms'>
+						<LuBarChartHorizontal />
 						Rooms
 						<div />
 					</Link>
 					<Link href='/activities'>
+						<LuFolderRoot />
 						Activities
 						<div />
 					</Link>
 				</nav>
+
+				<button
+					class={styles.showMore}
+					onClick$={() => (showMore.value = !showMore.value)}
+				>
+					{showMore.value ? <LuPanelLeftOpen /> : <LuPanelLeftClose />}
+				</button>
 			</Section>
 			<Dialog
 				class={styles.notification__dialog}
