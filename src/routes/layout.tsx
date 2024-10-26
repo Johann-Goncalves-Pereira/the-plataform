@@ -3,8 +3,8 @@ import type { RequestHandler } from '@builder.io/qwik-city'
 
 import styles from './layout.module.scss'
 
-import Header from '~/components/layout/header-ddd/header'
-import Footer from '~/components/layout/footer-ddd/footer'
+import Header from '~/components/layout/header/header'
+import Footer from '~/components/layout/footer/footer'
 import Section from '~/components/template/section/section'
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
