@@ -361,9 +361,10 @@
 // Navigation
 
 .navigation {
+	$size: 2rem;
 	display: flex;
 	flex-direction: column;
-	gap: 2.75rem;
+	gap: $size;
 
 	a {
 		display: flex;
@@ -401,22 +402,32 @@
 			position: absolute;
 			right: -1px;
 			border: 1px solid var(--color-surface-300);
-			width: 2rem;
-			height: 2rem;
+			width: $size;
+			height: $size;
+			pointer-events: none;
 			content: '';
 		}
 
 		&::before {
 			bottom: 100%;
-			box-shadow: 12px 8px 0 0 var(--color-surface-100);
-			border-top-width: 0;
+			box-shadow: 16px 0px 0 0px var(--color-surface-100);
 			border-left-width: 0;
+			border-top-right-radius: 50%;
 			border-bottom-right-radius: 50%;
+		}
+
+		&:first-of-type::before {
+			border-top-width: 0;
+			border-top-right-radius: 0;
+		}
+
+		&:first-of-type:after {
+			content: none;
 		}
 
 		&::after {
 			top: 100%;
-			box-shadow: 12px -8px 0 0 var(--color-surface-100);
+			box-shadow: 12px -8px 0 1px var(--color-surface-100);
 			border-bottom-width: 0;
 			border-left-width: 0;
 			border-top-right-radius: 50%;
