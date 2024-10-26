@@ -110,10 +110,19 @@ export default component$(() => {
 							class={styles.profilePicture}
 							alt='Profile picture'
 						/> */}
-							<RandomImage
-								class={styles.profilePicture}
-								alt='Profile picture'
-							/>
+							<div class={styles.profilePicture}>
+								<RandomImage
+									alt='Profile picture'
+									aria-label='Profile picture'
+								/>
+								<em>
+									{
+										['Dev', 'CS', 'Designer'][
+											Math.floor(Math.random() * (3 - 1) + 1)
+										]
+									}
+								</em>
+							</div>
 							{!showMore.value && (
 								<h3 class={styles.profileName}>{generatedWords()}</h3>
 							)}
@@ -178,8 +187,24 @@ export default component$(() => {
 					</footer>
 				</article>
 
-				<nav>
-					<Link href='#' />
+				<nav class={styles.navigation}>
+					<Link
+						class={styles['navigation--active']}
+						href='/opportunities'
+						tabIndex={1}
+						aria-hidden
+					>
+						Opportunities
+						<div />
+					</Link>
+					<Link href='/rooms'>
+						Rooms
+						<div />
+					</Link>
+					<Link href='/activities'>
+						Activities
+						<div />
+					</Link>
 				</nav>
 			</Section>
 			<Dialog
