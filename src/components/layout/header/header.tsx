@@ -90,6 +90,7 @@ export default component$(() => {
 	const getHeaderBoundary$ = $(() => {
 		if (widgetPosition.left !== 8) return
 		const header = document.getElementById(`header_${uniqueId}`)
+		
 		if (header) {
 			const rect = header.getBoundingClientRect()
 			const calculateHowMuchToLeft = rect.right + 8
@@ -200,9 +201,8 @@ export default component$(() => {
 							}}
 							open={notification.open}
 							fnQRL$={handleNotificationOpen$}
-							{...{
+							rest={{
 								title: 'Open dialog for Notification',
-								onFocus$: getHeaderBoundary$,
 							}}
 						>
 							<LuBell />
@@ -220,7 +220,7 @@ export default component$(() => {
 							}}
 							open={search.open}
 							fnQRL$={handleSearchOpen$}
-							{...{
+							rest={{
 								title: 'Open dialog (Spotlight) for Search',
 							}}
 						>

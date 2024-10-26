@@ -1,5 +1,4 @@
 import {
-	$,
 	ButtonHTMLAttributes,
 	component$,
 	CSSProperties,
@@ -57,8 +56,6 @@ export const handleCloseDialog = (
 		open = el.open
 		el.close()
 	}
-
-	return open
 }
 
 export const Dialog = component$(
@@ -127,7 +124,6 @@ export const DialogButton = component$(
 			aria-expanded={aria.expanded}
 			aria-haspopup='true'
 			onClick$={qrlFunction$}
-			// onClick$={async () => await qrlFunction$()}
 			{...rest}
 		>
 			<Slot />
