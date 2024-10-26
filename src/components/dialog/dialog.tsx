@@ -1,12 +1,11 @@
-import {
-	ButtonHTMLAttributes,
-	component$,
+import type {
 	CSSProperties,
+	ButtonHTMLAttributes,
 	DialogHTMLAttributes,
 	QRL,
 	QRLEventHandlerMulti,
-	Slot,
 } from '@builder.io/qwik'
+import { component$, Slot } from '@builder.io/qwik'
 
 import sectionStyles from '../template/section/section.module.scss'
 
@@ -56,6 +55,8 @@ export const handleCloseDialog = (
 		open = el.open
 		el.close()
 	}
+
+	return open
 }
 
 export const Dialog = component$(
@@ -81,8 +82,7 @@ export const Dialog = component$(
 						<Slot />
 					</dialog>
 				)
-
-			if (type === 'dialog')
+			else
 				return (
 					<dialog class={className} id={id.dialog} style={style} {...rest}>
 						<aside onClick$={fnQRL$} class={sectionStyles.section}>
@@ -106,6 +106,8 @@ export const handleOpenDialog = (
 		if (type === 'modal') dialog.open ? dialog.close() : dialog.showModal()
 		if (type === 'dialog') dialog.open ? dialog.close() : dialog.show()
 	}
+
+	return open
 }
 
 export const DialogButton = component$(

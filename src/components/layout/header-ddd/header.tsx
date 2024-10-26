@@ -1,11 +1,4 @@
-import {
-	$,
-	component$,
-	useOn,
-	useOnDocument,
-	useSignal,
-	useStore,
-} from '@builder.io/qwik'
+import { $, component$, useOnDocument, useStore } from '@builder.io/qwik'
 
 // import ProfilePicture from '/public/profile-pictures/001.jpg?jsx'
 import {
@@ -64,7 +57,7 @@ export default component$(() => {
 	useOnDocument(
 		'keydown',
 		$(event => {
-			if (event.key === 'Escape' || event?.code === 'Escape') {
+			if (event.key === 'Escape' ) {
 				search.open = false
 				notification.open = false
 			}
@@ -90,7 +83,7 @@ export default component$(() => {
 	const getHeaderBoundary$ = $(() => {
 		if (widgetPosition.left !== 8) return
 		const header = document.getElementById(`header_${uniqueId}`)
-		
+
 		if (header) {
 			const rect = header.getBoundingClientRect()
 			const calculateHowMuchToLeft = rect.right + 8

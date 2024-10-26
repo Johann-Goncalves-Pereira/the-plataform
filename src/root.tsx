@@ -1,4 +1,4 @@
-import { component$, useComputed$, useSignal, useTask$ } from '@builder.io/qwik'
+import { component$, useSignal } from '@builder.io/qwik';
 import {
 	QwikCityProvider,
 	RouterOutlet,

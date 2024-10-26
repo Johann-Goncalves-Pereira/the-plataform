@@ -1,10 +1,9 @@
-import {
+import type {
 	ClassList,
-	component$,
 	HTMLAttributes,
 	QRLEventHandlerMulti,
-	Slot,
 } from '@builder.io/qwik'
+import { component$, Slot } from '@builder.io/qwik'
 
 import styles from './section.module.scss'
 
