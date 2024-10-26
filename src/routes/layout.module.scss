@@ -22,11 +22,10 @@
 
 	@media screen and (--md-n-below) {
 		grid-template-areas:
-			'main main main'
+			'header header header'
 			'main main main'
 			'footer footer footer';
-		header,
-		> [aria-labelledby='sidebar--right'] {
+		.sidebar {
 			display: none;
 		}
 	}
@@ -36,7 +35,8 @@
 			'header main main'
 			'header main main'
 			'header footer footer';
-		> [aria-labelledby='sidebar--right'] {
+
+		.sidebar {
 			display: none;
 		}
 	}
@@ -56,8 +56,9 @@
 		grid-area: main;
 	}
 
-	[aria-labelledby='sidebar--right'] {
+	.sidebar {
 		grid-area: right;
+		height: 100%;
 	}
 
 	> footer {

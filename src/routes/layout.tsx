@@ -1,10 +1,11 @@
 import { component$, Slot, useStyles$ } from '@builder.io/qwik'
 import type { RequestHandler } from '@builder.io/qwik-city'
 
-import styles from './layout.scss?inline'
+import styles from './layout.module.scss'
 
 import Header from '~/components/layout/header/header'
 import Footer from '~/components/layout/footer/footer'
+import Section from '~/components/template/section/section'
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
 	// Control caching for this request for best performance and to reduce hosting costs:
@@ -18,15 +19,17 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 }
 
 export default component$(() => {
-	useStyles$(styles)
-
 	return (
 		<>
 			<Header />
-			<main>
+			<Section tag='main'>
 				<Slot />
-			</main>
-			<aside aria-labelledby='sidebar--right'>d</aside>
+			</Section>
+			<Section
+				class={styles.sidebar}
+				tag='aside'
+				aria-labelledby='sidebar--right'
+			></Section>
 			<Footer />
 		</>
 	)
